@@ -362,7 +362,7 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 # static and media files
-static/
+#static/
 media/
 
 # databasefile
