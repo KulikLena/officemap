@@ -61,7 +61,7 @@
             info.addTo(map);
         
         
-            // get color depending on population density value
+            // get color depending on rent rate  value
             function getColor(d) {
                 return d > 22 ? '#800026' :
                     d > 18  ? '#BD0026' :
@@ -73,7 +73,7 @@
                     d > 0   ? '#FED976' : 
                     '#FFEDA0';
             }
-        
+
             function style(feature) {
                 return {
                     weight: 2,
@@ -90,19 +90,16 @@
                 info.update(layer.feature.properties);
             }
         
-            var geojson;
-        
+                  
             function resetHighlight(e) {
                 geojson.resetStyle(e.target);
                 info.update();
             }
         
             function zoomToFeature(e) {
-                for (var prop in feature.properties) {
-                    popupcontent.push(prop + ": " + feature.properties[prop]);
-                    }
-                layer.bindPopup(popupcontent.join("<br />"));;
+                map.fitBounds(e.target.getBounds());
             }
+        
         
             function onEachFeature(feature, layer) {
                 layer.on({
@@ -133,6 +130,11 @@
                onEachFeature: onEachFeature
              }).addTo(map);
 
+            var att = geojson.properties
+            for (var f in geojson.feature) {
+                heat = L.heatLayer([att.Lat, att.Lng, att.GLA],{radius: 25}).addTo(map);                }
+
+            //var heat = L.heatLayer([53.90466365, 27.53293216, 10],{radius: 25}).addTo(map);
             // geojson.eachLayer(function(layer) {
             //   layer.bindPopup(layer.feature.properties.name);
              // });
@@ -142,6 +144,12 @@
                     popupcontent.push(prop + ": " + feature.properties[prop]);
                     }
                 layer.bindPopup(popupcontent.join("<br />"));
+                }
+
+            function buildheatmap(feature, layer) {
+                for (var f in feature) {
+                    var heat = L.heatLayer([feature.properties.lat, feature.properties.lng, feature.properties.g],{radius: 25}).addTo(map);
+                    }
                 }
     
             map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
