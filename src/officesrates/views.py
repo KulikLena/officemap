@@ -9,6 +9,14 @@ def offices_map(request):
     template_name='officesrates/index.html' 
     return render(request, template_name, {})
 
+def vilnius_map(request):
+    template_name='officesrates/vilnius.html' 
+    return render(request, template_name, {})
+
+def huff(request):
+    template_name='officesrates/huff.html' 
+    return render(request, template_name, {})
+
 def offices_map_density(request):
     template_name='officesrates/kepler.html' 
     return render(request, template_name, {})

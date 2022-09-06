@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Office Map</title>
+        {% load static %}
+        
+        <link rel="stylesheet" href="{% static "leaflet.css" %}"> 
+        <link rel="stylesheet" href="{% static "leaflet.reachability.css" %}"> 
+        <link rel="stylesheet" href="{% static "css\bootstrap.css" %}">
+        
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+        <script src= "{% static "leaflet-src.js"  %}"></script> 
+        <script src="{% static "jquery-3.2.0.min.js" %}"></script> 
+        <script src="{% static "leaflet.reachability.js" %}"></script>
+        <script src="{% static "leaflet-heat.js" %}"></script>
+        
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+            .leaflet-container {
+                height: 400px;
+                width: 600px;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        </style>
+    
+        <style>#map { width: 300vh; height: 100vh; }
+    .info { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+    .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
+    </head>
+    <body>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script type="text/javascript" src="{% static "residential_vilnius.js"%}"></script>
+        <script type="text/javascript">
+
+            var map = L.map('map').setView([54.68678431775792, 25.27905524694906], 12);
+            //'https://api.mapbox.com/styles/v1/lenakulik/cl4gsjt6v000e15pjtr0xe1b8/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGVuYWt1bGlrIiwiYSI6ImNranVqYnhxMDAzZHgyc2xncTI2ZTJlaWIifQ.__lIWTKzeHrjT0FABCVsjw'
+            //'https://api.mapbox.com/styles/v1/lenakulik/cl4gubhle000114qtkjq2kz8f/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGVuYWt1bGlrIiwiYSI6ImNranVqYnhxMDAzZHgyc2xncTI2ZTJlaWIifQ.__lIWTKzeHrjT0FABCVsjw'
+            var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/lenakulik/cl4gubhle000114qtkjq2kz8f/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGVuYWt1bGlrIiwiYSI6ImNranVqYnhxMDAzZHgyc2xncTI2ZTJlaWIifQ.__lIWTKzeHrjT0FABCVsjw', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
+            }).addTo(map);
+        
+             // get color depending on rent rate  value
+                function getColor(d) {
+                    return d > 22 ? '#342B47' :
+                        d > 18  ? '#4B4068' :
+                        d > 14  ? '#496D73' :
+                        d > 12  ? '#507980' :
+                        d > 10   ? '#709E87' :
+                        d > 8   ? '#99BE95' :
+                        d > 5   ? '#C4CA8A' :
+                        d > 1   ? '#D8DA26' : 
+                        d == 1  ? '#D8DA26':
+                        '#808080';
+                }
+        
+            function style(feature) {
+                return {
+                weight: 8,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7,
+                fillColor: getColor(feature.properties.RENT_RATE)
+                };
+            }
+
+            // control that shows state info on hover
+            var info = L.control();
+        
+            info.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+        
+            info.update = function (props) {
+                this._div.innerHTML = '<h4> Office Rent Rates</h4>' +  (props ?
+                    '<b>' + props.Name + '</b><br />' + props.RENT_RATE + ' eur / m<sup>2</sup>' : '');
+            };
+        
+            info.addTo(map);
+
+                var geojsonMarkerOptions  = {
+                    //radius: 8,
+                    color: "#000",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 1
+                };
+                
+                var geojson = L.geoJSON(residential_data, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, geojsonMarkerOptions);
+                    }, 
+                    onEachFeature: onEachFeature, 
+                    style: function(feature) {
+                        return (feature.properties.building) == "residential" ? {color:'#342B47'} :
+                        (feature.properties.building) == "apartments"  ? {color:'#342B47'}:
+                        {color:'#D8DA26'};
+                       // switch (feature.properties.RENT_RATE) {
+                        //    case 'Existing': return {color: "#ff0000"};
+                       //     case 'Pipeline':   return {color: "#0000ff"};
+                       // }
+                    },
+                    radius: function(feature) {
+                        return {radius: parseInt(feature.properties.GLA)/100}
+                    }
+                }).addTo(map);
+
+       
+            function highlightFeature(e) {
+                var layer = e.target;
+                info.update(layer.feature.properties);
+            }
+
+            function styleIsolines(feature) {
+                return {
+                    color: '#000000',
+                    opacity: 1,
+                    fillOpacity: 0.2
+                };
+            }
+
+            L.control.reachability({
+                // add settings/options here
+                apiKey: '5b3ce3597851110001cf62482f6a7400a3884644bed8408f5b79a7e7', 
+                styleFn: styleIsolines
+            }).addTo(map);
+
+                 
+            function resetHighlight(e) {
+                geojson.resetStyle(e.target);
+                info.update();
+            }
+            
+            //var att = geojson.properties
+            var popup = L.popup();
+            
+            function onMapClick(e, feature) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at "+ "feature.properties.RENT_RATE" )
+                    .openOn(map);
+            }
+            
+            map.on('click', onMapClick);
+        
+        
+            function onEachFeature(feature, layer) {
+                layer.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetHighlight,
+                    click: onMapClick
+                });
+            }
+
+            var locations = residential_data.features.map(function(rat) {
+                // the heatmap plugin wants an array of each location
+                var location = rat.geometry.coordinates.reverse();
+                location.push(0.1);
+                return location; // e.g. [50.5, 30.5, 0.2], // lat, lng, intensity
+              });
+
+            var heat = L.heatLayer(locations, { minOpacity: 0.0, max: 0.5, maxZoom: 15, radius: 50, blur: 40, gradient: {0.4: 'blue', 0.85: '#709E87', 1: '#342B47'} });
+              map.addLayer(heat);
+            
+
+            function makemarkers(feature, layer) {
+                var popupcontent = [];
+                for (var prop in feature.properties) {
+                    popupcontent.push(prop + ": " + feature.properties[prop]);
+                    }
+                layer.bindPopup(popupcontent.join("<br />"));
+                }
+
+   
+            map.attributionControl.addAttribution('Арендные ставки; <a href="https://colliersinvest.by/">Коллиерз</a>');
+                
+            var legend = L.control({position: 'bottomright'});
+        
+            legend.onAdd = function (map) {
+        
+                var div = L.DomUtil.create('div', 'info legend');
+                var grades = [0,1, 5, 8, 10, 12, 14, 18, 22];
+                var labels = [];
+                var from, to;
+        
+                for (var i = 0; i < grades.length; i++) {
+                    from = grades[i];
+                    to = grades[i + 1];
+        
+                    labels.push(
+                        '<i style="background:' + getColor(from + 0.1) + '"></i> ' +
+                        from + (to ? '&ndash;' + to : '+'));
+                }
+        
+                div.innerHTML = labels.join('<br>');
+                return div;
+            };
+        
+            legend.addTo(map);
+
+
+            
+        
+        </script>
+    </body>
+</html>
