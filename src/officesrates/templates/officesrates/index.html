@@ -43,7 +43,31 @@
                 attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
             }).addTo(map);
         
-          
+             // get color depending on rent rate  value
+                function getColor(d) {
+                    return d > 22 ? '#342B47' :
+                        d > 18  ? '#4B4068' :
+                        d > 14  ? '#496D73' :
+                        d > 12  ? '#507980' :
+                        d > 10   ? '#709E87' :
+                        d > 8   ? '#99BE95' :
+                        d > 5   ? '#C4CA8A' :
+                        d > 1   ? '#D8DA26' : 
+                        d == 1  ? '#D8DA26':
+                        '#808080';
+                }
+        
+            function style(feature) {
+                return {
+                weight: 8,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7,
+                fillColor: getColor(feature.properties.RENT_RATE)
+                };
+            }
+
             // control that shows state info on hover
             var info = L.control();
         
@@ -59,32 +83,49 @@
             };
         
             info.addTo(map);
-        
-        
-            // get color depending on rent rate  value
-            function getColor(d) {
-                return d > 22 ? '#800026' :
-                    d > 18  ? '#BD0026' :
-                    d > 14  ? '#E31A1C' :
-                    d > 12  ? '#FC4E2A' :
-                    d > 10   ? '#FD8D3C' :
-                    d > 8   ? '#FEB24C' :
-                    d > 5   ? '#FEB24C' :
-                    d > 0   ? '#FED976' : 
-                    '#FFEDA0';
-            }
+           
+            /* global officeData */
+            //geojson = L.geoJson(officeData, {
+            //    style: style,
+             //   onEachFeature: onEachFeature
+             //   }).addTo(map);
 
-            function style(feature) {
-                return {
-                    weight: 2,
+
+                var geojsonMarkerOptions  = {
+                    //radius: 8,
+                    color: "#000",
+                    weight: 1,
                     opacity: 1,
-                    color: 'white',
-                    dashArray: '3',
-                    fillOpacity: 0.7,
-                    fillColor: getColor(feature.properties.RENT_RATE)
+                    fillOpacity: 0.8
                 };
-            }
-        
+                
+                var geojson = L.geoJSON(officeData, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, geojsonMarkerOptions);
+                    }, 
+                    onEachFeature: onEachFeature, 
+                    style: function(feature) {
+                        return parseInt(feature.properties.RENT_RATE) > 22 ? {color:'#342B47'} :
+                        parseInt(feature.properties.RENT_RATE) > 18  ? {color:'#4B4068'}:
+                        parseInt(feature.properties.RENT_RATE) > 14  ? {color:'#496D73'} :
+                        parseInt(feature.properties.RENT_RATE) > 12  ? {color:'#507980'} :
+                        parseInt(feature.properties.RENT_RATE) > 10  ? {color:'#709E87'} :
+                        parseInt(feature.properties.RENT_RATE) > 8   ? {color:'#99BE95'} :
+                        parseInt(feature.properties.RENT_RATE) > 5   ? {color:'#C4CA8A'} :
+                        parseInt(feature.properties.RENT_RATE) > 1   ? {color:'#D8DA26'} : 
+                        parseInt(feature.properties.RENT_RATE) == 1   ? {color:'#808080', fillOpacity:0, weight:1} : 
+                        {color:'#D8DA26'};
+                       // switch (feature.properties.RENT_RATE) {
+                        //    case 'Existing': return {color: "#ff0000"};
+                       //     case 'Pipeline':   return {color: "#0000ff"};
+                       // }
+                    },
+                    radius: function(feature) {
+                        return {radius: parseInt(feature.properties.GLA)/100}
+                    }
+                }).addTo(map);
+
+       
             function highlightFeature(e) {
                 var layer = e.target;
                 info.update(layer.feature.properties);
@@ -95,42 +136,38 @@
                 geojson.resetStyle(e.target);
                 info.update();
             }
-        
-            function zoomToFeature(e) {
-                map.fitBounds(e.target.getBounds());
+            
+            //var att = geojson.properties
+            var popup = L.popup();
+            
+            function onMapClick(e, feature) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at "+ "feature.properties.RENT_RATE" )
+                    .openOn(map);
             }
+            
+            map.on('click', onMapClick);
         
         
             function onEachFeature(feature, layer) {
                 layer.on({
                     mouseover: highlightFeature,
                     mouseout: resetHighlight,
-                    click: zoomToFeature
+                    click: onMapClick
                 });
             }
-            silver = L.marker([53.90559352, 27.52042685], title = "Silwer Tower", riseOnHover = true,
-            ).addTo(map);
-            silver.bindTooltip("Silwer Tower <br /> Ставка 10.0 евро/кв. м", {
-                direction: 'right',
-                permanent: false,
-                sticky: true,
-                offset: [10, 0],
-                opacity: 0.75,
-                backgroundColor: 'black'
-            });
+            //silver = L.marker([53.90559352, 27.52042685], title = "Silwer Tower", riseOnHover = true,
+            //).addTo(map);
+            //silver.bindTooltip("Silwer Tower <br /> Ставка 10.0 евро/кв. м", {
+            //    direction: 'right',
+            //    permanent: false,
+            //   sticky: true,
+            //    offset: [10, 0],
+            //  opacity: 0.75,
+            //   backgroundColor: 'black'
+            //});
 
-            saako =  L.marker([53.90466365, 27.53293216], title = "Saako", riseOnHover = true,
-            ).addTo(map);
-            saako.bindTooltip("Saako <br /> Ставка 9.5 евро/кв. м" )
-            
-                
-            /* global officeData */
-            geojson = L.geoJson(officeData, {
-               style: style,
-               onEachFeature: onEachFeature
-             }).addTo(map);
-
-            var att = geojson.properties
             for (var f in geojson.feature) {
                 heat = L.heatLayer([att.Lat, att.Lng, att.GLA],{radius: 25}).addTo(map);                }
 
@@ -159,7 +196,7 @@
             legend.onAdd = function (map) {
         
                 var div = L.DomUtil.create('div', 'info legend');
-                var grades = [0, 5, 8, 10, 12, 14, 18, 22];
+                var grades = [0,1, 5, 8, 10, 12, 14, 18, 22];
                 var labels = [];
                 var from, to;
         
@@ -168,7 +205,7 @@
                     to = grades[i + 1];
         
                     labels.push(
-                        '<i style="background:' + getColor(from + 1) + '"></i> ' +
+                        '<i style="background:' + getColor(from + 0.1) + '"></i> ' +
                         from + (to ? '&ndash;' + to : '+'));
                 }
         
