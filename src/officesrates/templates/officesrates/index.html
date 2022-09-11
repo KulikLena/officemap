@@ -4,14 +4,13 @@
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <title>Office Map</title>
         {% load static %}
-        
         <link rel="stylesheet" href="{% static "leaflet.css" %}"> 
         <link rel="stylesheet" href="{% static "leaflet.reachability.css" %}"> 
         <link rel="stylesheet" href="{% static "css\bootstrap.css" %}">
-        
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
         <script src= "{% static "leaflet-src.js"  %}"></script> 
+        <script src="{% static "leaflet.ajax.min.js" %}"></script>
         <script src="{% static "jquery-3.2.0.min.js" %}"></script> 
         <script src="{% static "leaflet.reachability.js" %}"></script>
         <script src="{% static "leaflet-heat.js" %}"></script>
@@ -29,19 +28,64 @@
             }
         </style>
     
-        <style>#map { width: 300vh; height: 100vh; }
+        <style>#map { position: absolute; right: 0; top:0; height: 100vh; width:180vh }
     .info { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
     .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
     .popupCustom .leaflet-popup-tip,
-    .popupCustom .leaflet-popup-content-wrapper {padding: 6px 8px; background: white; color: #234c5e;font: 14px/16px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
-    .leftPanel { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
-    .contentPanel { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
+    .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+    .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+    .popupCustom .leaflet-popup-content-wrapper { line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 14px/16px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
+    .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
+    .contentPanel {   width:200px; padding: 6px 8px; font: 12px/14px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
         </style>
 </head>
-    <body>
-    </head>
-    <body>
-        <div id="map"></div>
+<body>
+<div id="side-bar" class="col-md-3">   
+    <div id="divFilterType" class="leaflet-bar">
+        <h4> Категория </h4> 
+        <div class="contentPanel">
+            <input type='radio' name='fltType' value='ALL' checked>Все
+        </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltType' value='Existing'>Существующие
+            </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltType' value='Pipeline'>В стадии строительства или консервации
+        </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltType' value='Completed in I HY 2022'>Завершенные в 2022
+        </div>
+    </div>
+    <div id="divFilterRent" class="leaflet-bar">
+        <h4> Cтавки, EUR/кв.м </b><br>в месяц без НДС </h4> 
+        <div class="contentPanel">
+            <input type='radio' name='fltRent' value='ALL' checked>Все
+        </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltRent' value='2' >Нет данных
+        </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltRent' value='5.0'>До 5
+            </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltRent' value='10.0'>5-10
+        </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltRent' value='15.0'>10 - 15
+        </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltRent' value='20.0'>15-20
+        </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltRent' value='25.0'>20-25
+        </div>
+        <div class="contentPanel">
+            <input type='radio' name='fltRent' value='30.0'>Болee 25
+        </div>
+    </div>
+</div>
+
+        <div id="map" ></div>
         <script type="text/javascript" src="{% static "office-Minsk.js"%}"></script>
         <script type="text/javascript">
 
@@ -76,8 +120,8 @@
             };
         
             info.update = function (props) {
-                this._div.innerHTML = '<h4> Ставки аренды в офисах Минска</h4>' +  (props ?
-                    '<b>' + props.Name + '</b><br />' + props.RENT_RATE + ' eur / м<sup>2</sup>' : '');
+                this._div.innerHTML = '<h4> Ставки аренды'+ '<br>' +'в офисах Минска</h4>'+'<br> <img src="{% static 'colliers.png' %}" width=100 ><br />' + (props ?
+                    '<b><br>' + props.Name + '</b><br />' + props.RENT_RATE + ' eur / м<sup>2</sup>' +'</b><br>'+ '</b>': '' );
             };
         
             info.addTo(map);
@@ -96,15 +140,18 @@
                 var customOptions = {
                     'maxWidth': '400',
                     'width': '200',
+                    'line-height':'0.5',
                     'className' : 'popupCustom' }
                 
-                var geojson = L.geoJSON(officeData, {
+                var geojson = L.geoJSON.ajax('{% static "office-Minsk.js.geojson"%}', {
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, geojsonMarkerOptions);
                     }, 
+                    filter:filterOfficeByType, 
+                    filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><p>Ставка: '+feature.properties.RENT_RATE +' eur/м<sup>2</sup></p>'+
-                        '<p>Статус: '+feature.properties.Type+'</p><p>'+ '<img src="{% static 'photo.jpg' %}" alt="My image">'+ '</p><p>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></p>'), customOptions);
+                        layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><br>Ставка: '+feature.properties.RENT_RATE +' eur/м<sup>2</sup></br>'+
+                        '<br>Статус: '+feature.properties.Type+'</br><br>'+ '</br><br>'+ '<img src="{% static 'photo.jpg' %}" alt="My image" width=150>'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -113,15 +160,15 @@
                     }, 
                     style: function(feature) {
                         var radius_gla = parseInt(Math.sqrt(feature.properties.GLA/100));
-                        return parseInt(feature.properties.RENT_RATE) > 22 ? {color:'#342B47', radius: radius_gla} :
-                        parseInt(feature.properties.RENT_RATE) > 18  ? {color:'#4B4068', radius: radius_gla}:
-                        parseInt(feature.properties.RENT_RATE) > 14  ? {color:'#496D73', radius: radius_gla} :
-                        parseInt(feature.properties.RENT_RATE) > 12  ? {color:'#507980', radius: radius_gla} :
-                        parseInt(feature.properties.RENT_RATE) > 10  ? {color:'#709E87', radius: radius_gla} :
-                        parseInt(feature.properties.RENT_RATE) > 8   ? {color:'#99BE95', radius: radius_gla} :
-                        parseInt(feature.properties.RENT_RATE) > 5   ? {color:'#C4CA8A', radius: radius_gla} :
-                        parseInt(feature.properties.RENT_RATE) > 1   ? {color:'#D8DA26', radius: radius_gla} : 
-                        parseInt(feature.properties.RENT_RATE) == 1   ? {color:'#808080', radius: radius_gla, fillOpacity:0, weight:1} : 
+                        return parseFloat(feature.properties.RENT_RATE) > 22 ? {color:'#342B47', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 18  ? {color:'#4B4068', radius: radius_gla}:
+                        parseFloat(feature.properties.RENT_RATE) > 14  ? {color:'#496D73', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 12  ? {color:'#507980', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 10  ? {color:'#709E87', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 8   ? {color:'#99BE95', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 5   ? {color:'#C4CA8A', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 1   ? {color:'#D8DA26', radius: radius_gla} : 
+                        parseFloat(feature.properties.RENT_RATE) == 1   ? {color:'#808080', radius: radius_gla, fillOpacity:0, weight:1} : 
                         {color:'#D8DA26', radius: radius_gla};
                     },
                     
@@ -137,34 +184,67 @@
                 geojson.resetStyle(e.target);
                 info.update();
             }
+            // filers on type
+            $("input[name=fltType]").click(function(){
+                officeIDs=[];
+                geojson.refresh();
+            });
+
+            function filterOfficeByType(json) {
+                var att=json.properties;
+                var optFilter = $("input[name=fltType]:checked").val();
+                var optFilter2 = $("input[name=fltRent]:checked").val();
+                if (optFilter=='ALL' && optFilter2 == 'ALL') {
+                    return true;
+                } else {
+                    return ((att.Type==optFilter)||(optFilter=='ALL')) 
+                     && ((optFilter2=='ALL')||(parseFloat(att.RENT_RATE) <= parseFloat(optFilter2))
+                      && (parseFloat(att.RENT_RATE) > (parseFloat(optFilter2)-5.0)));
+                }
+            }
+
+            // filers on rent_rate
+                $("input[name=fltRent]").click(function(){
+                    officeIDs=[];
+                    geojson.refresh();
+                    });
             
+                function filterOfficeByRent(json) {
+                    var att=json.properties;
+                    var optFilter = $("input[name=fltType]:checked").val();
+                    var optFilter2 = $("input[name=fltRent]:checked").val();
+                    if (optFilter=='ALL' && optFilter2 == 'ALL') {
+                        return true;
+                        } else {
+                         return ((att.Type==optFilter)||(optFilter=='ALL'))
+                          && ((optFilter2=='ALL')||(parseFloat(att.RENT_RATE) <= parseFloat(optFilter2)) 
+                          && (parseFloat(att.RENT_RATE) > (parseFloat(optFilter2)-5.0)));
+                            }
+                        }
+
+          
                 var popup = L.popup();
             
-       
+       // Плотность офисной недвижимости
             var locations = officeData.features.map(function(rat) {
                 // the heatmap plugin wants an array of each location
                 var location = rat.geometry.coordinates.reverse();
-                location.push(0.1);
+                var radius_gla = parseInt(Math.sqrt(rat.properties.GLA/100))
+                location.push(radius_gla);
                 return location; // e.g. [50.5, 30.5, 0.2], // lat, lng, intensity
               });
 
-           // var heat = L.heatLayer(locations, { minOpacity: 0.0, max: 0.5, maxZoom: 15, radius: 50, blur: 40, gradient: {0.4: 'blue', 0.85: '#709E87', 1: '#342B47'} });
-           //   map.addLayer(heat);
+           var heat = L.heatLayer(locations, { minOpacity: 0.4, max: 0.45, maxZoom: 20, radius: 30, blur: 15, gradient: {0.4: '#709E87', 0.85: '#709E87', 1: '#D8DA26'}, 
+         });
+                   
+           
+
            var layerGroup = L.geoJSON(officeData, {
             onEachFeature: function (feature, layer) {
               layer.bindPopup('<h1>'+feature.properties.name+'</h1><p>name: '+feature.properties.RENT_RATE+'</p>');
             }
           }).addTo(map);
 
-            function makemarkers(feature, layer) {
-                var popupcontent = [];
-                for (var prop in feature.properties) {
-                    popupcontent.push(prop + ": " + feature.properties[prop]);
-                    }
-                layer.bindPopup(popupcontent.join("<br />"));
-                }
-
-   
             map.attributionControl.addAttribution('Арендные ставки; <a href="https://colliersinvest.by/">Коллиерз</a>');
                 
             var legend = L.control({position: 'bottomright'});
@@ -190,6 +270,17 @@
             };
         
             legend.addTo(map);
+           
+            var baseLayers = {
+                "Ставки": tiles,
+                };
+            
+            var overlays = {
+                "Плотность офисного стока": heat,
+                };
+            
+            L.control.layers(baseLayers, overlays).addTo(map);
+           
         
         
         </script>

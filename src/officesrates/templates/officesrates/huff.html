@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-	<title>Minsk</title>
+	<title>Vilnius Huff</title>
 	{% load static %}
 
 	<meta charset="utf-8" />	
@@ -26,10 +26,10 @@
 		}
 	</style>
 
-	<script type="text/javascript" src="{% static "Minsk_map.geojson"%}"></script>
+	<script type="text/javascript" src="{% static "vilnius.geojson"%}"></script>
 	
-	<script type="text/javascript" src="{% static "DIY.js"%}"></script>
-	<script type="text/javascript" src="{% static "Minsk_residential.geojson"%}"></script>
+	<script type="text/javascript" src="{% static "maxima.js"%}"></script>
+	<script type="text/javascript" src="{% static "vilnius_residential_land.geojson"%}"></script>
 
 	
 </head>
@@ -38,7 +38,7 @@
 <div id='map'></div>
 
 <script>
-	var map = L.map('map', {zoomSnap: 0.1}).setView([53.896778277043836, 27.56520771701336], 12.5);
+	var map = L.map('map', {zoomSnap: 0.1}).setView([54.679413394326424, 25.286324045718565], 12.5);
 
 	var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/lenakulik/cl4gubhle000114qtkjq2kz8f/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGVuYWt1bGlrIiwiYSI6ImNranVqYnhxMDAzZHgyc2xncTI2ZTJlaWIifQ.__lIWTKzeHrjT0FABCVsjw', {
 		maxZoom: 19,
@@ -71,16 +71,17 @@
 			sum += attr
 		})	
 		hex.properties.prob = obj['Object'] / sum
-		// console.log(hexgrid.features[i].properties.prob)
+		 console.log(hexgrid.features[i].properties.prob)
 
 		// add hexgrid to the map
+		//var hexgridLyr = L.geoJSON(hex, {style:style}).addTo(map);
 		for (var i = 0; i < residential.features.length; i++){
 			if (turf.intersect(hex, residential.features[i])){
 				var hexgridLyr = L.geoJSON(hex, {style:style}).addTo(map);
 				break
 			}	
 		}
-	//})
+	})
 	
 	//create color ramp
 	function getColor(y) {
@@ -103,8 +104,8 @@
 			fillColor: getColor(feature.properties.prob),
 	    	color: "#A2AEBB",
 	    	weight: 0.5,
-	    	opacity: 1,
-	    	fillOpacity: 0.8
+	    	opacity:0.5,
+	    	fillOpacity: 0.3
 		};
 	}
 
@@ -124,8 +125,8 @@
 
 	var mallLayer =  L.geoJSON(malls, {
 		pointToLayer: function (feature, latlng) {
-			return L.marker(latlng);
-		}
+			return L.marker(latlng, );
+		}, style:{color: '#414361', fillOpacity: 0, weight:5}
 	}).addTo(map);
 
 
