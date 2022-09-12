@@ -32,8 +32,8 @@
     .info { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
     .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
     .popupCustom .leaflet-popup-tip,
-    .sidebar collapsed sidebar-left leaflet-touch {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-    .sidebar-tabs {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+    .leaflet-sidebar collapsed {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+    .leaflet-sidebar-tabs {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
     .sidebar-content {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
     .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
     .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
@@ -43,44 +43,44 @@
         </style>
 </head>
 <body>
-<div id="side-bar" class="sidebar collapsed sidebar-left leaflet-touch">   
-    <div id="divFilterType" class="sidebar-tabs">
+<div id="side-bar" class="leaflet-sidebar collapsed">   
+    <div id="divFilterType" class="leaflet-sidebar-tabs">
         <h4> Категория </h4> 
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltType' value='ALL' checked>Все
         </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltType' value='Existing'>Существующие
             </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltType' value='Pipeline'>В стадии строительства
         </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltType' value='Completed in I HY 2022'>Завершенные в 2022
         </div>
             <h4> Cтавки, EUR/кв.м </b><br>в месяц без НДС </h4> 
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltRent' value='ALL' checked>Все
         </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltRent' value='2' >Нет данных
         </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltRent' value='5.0'>До 5
             </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltRent' value='10.0'>5-10
         </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltRent' value='15.0'>10 - 15
         </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltRent' value='20.0'>15-20
         </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltRent' value='25.0'>20-25
         </div>
-        <div class="sidebar-content">
+        <div class="fa fa-bars">
             <input type='radio' name='fltRent' value='30.0'>Болee 25
         </div>
     </div>
