@@ -34,6 +34,7 @@
     .popupCustom .leaflet-popup-tip,
     .sidebar collapsed sidebar-left leaflet-touch {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
     .sidebar-tabs {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+    .sidebar-content {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
     .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
     .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
     .popupCustom .leaflet-popup-content-wrapper { line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 14px/16px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
@@ -45,49 +46,47 @@
 <div id="side-bar" class="sidebar collapsed sidebar-left leaflet-touch">   
     <div id="divFilterType" class="sidebar-tabs">
         <h4> Категория </h4> 
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltType' value='ALL' checked>Все
         </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltType' value='Existing'>Существующие
             </div>
-        <div class="contentPanel">
-            <input type='radio' name='fltType' value='Pipeline'>В стадии строительства или консервации
+        <div class="sidebar-content">
+            <input type='radio' name='fltType' value='Pipeline'>В стадии строительства
         </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltType' value='Completed in I HY 2022'>Завершенные в 2022
         </div>
-    </div>
-    <div id="divFilterRent" class="sidebar-tabs">
-        <h4> Cтавки, EUR/кв.м </b><br>в месяц без НДС </h4> 
-        <div class="contentPanel">
+            <h4> Cтавки, EUR/кв.м </b><br>в месяц без НДС </h4> 
+        <div class="sidebar-content">
             <input type='radio' name='fltRent' value='ALL' checked>Все
         </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltRent' value='2' >Нет данных
         </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltRent' value='5.0'>До 5
             </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltRent' value='10.0'>5-10
         </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltRent' value='15.0'>10 - 15
         </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltRent' value='20.0'>15-20
         </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltRent' value='25.0'>20-25
         </div>
-        <div class="contentPanel">
+        <div class="sidebar-content">
             <input type='radio' name='fltRent' value='30.0'>Болee 25
         </div>
     </div>
 </div>
 
-        <div id="map" ></div>
+        <div id="map" class = "sidebar-map leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"></div>
         <script type="text/javascript" src="{% static "office-Minsk.js"%}"></script>
         <script type="text/javascript">
 
