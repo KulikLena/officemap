@@ -38,9 +38,10 @@
             .leaflet-sidebar-tabs {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .fa fa-bars {width: 200px; }
+            .fa fa-bars {width: 200px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
+            .leaflet-popup-content {line-height:100%; }
             .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .popupCustom .leaflet-popup-content-wrapper { line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 14px/16px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
+            .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
             .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
             .leaflet-sidebar-header {background-color: #496D73}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
@@ -61,13 +62,13 @@
                 <input type='radio' name='fltType' value='ALL' checked>Все
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltType' value='Existing'>Существующие
+                <input type='radio' name='fltType' value='Существующий'>Существующие
                 </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltType' value='Pipeline'>В стадии строительства
+                <input type='radio' name='fltType' value='В стадии строительства'>В стадии строительства
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltType' value='Completed in I HY 2022'>Завершенные в 2022
+                <input type='radio' name='fltType' value='Завершен в 2022'>Завершенные в 2022
             </div>
                 <h4> Cтавки, EUR/кв.м </b><br>в месяц без НДС </h4> 
             <div class="fa fa-bars">
@@ -133,7 +134,7 @@
         
             info.update = function (props) {
                 this._div.innerHTML = '<h4> Ставки аренды'+ '<br>' +'в офисах Минска</h4>'+'<br> <img src="{% static 'colliers.png' %}" width=100 ><br />' + (props ?
-                    '<b><br>' + props.Name + '</b><br />' + props.RENT_RATE + ' eur / м<sup>2</sup>' +'</b><br>'+ '</b>': '' );
+                    '<b><br>' + props.Name + '</b><br />' + props.description +'</b><br>'+ '</b>': '' );
             };
         
             info.addTo(map);
@@ -161,8 +162,8 @@
                     filter:filterOfficeByType, 
                     filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><br>Ставка: '+feature.properties.RENT_RATE +' eur/м<sup>2</sup></br>'+
-                        '<br>Статус: '+feature.properties.Type+'</br><br>'+ '</br><br>'+  '<img src=static/'+feature.properties.Img +' style="width:100px;height:100px;">'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
+                        layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><br><b>Адрес:</b> '+feature.properties.description +' </br>'+
+                        '<br><b>Статус: </b>'+feature.properties.Type+'</br><br>'+ '</br><br>'+  '<img src="{% static 'photo.jpg' %}" width=100">'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -247,7 +248,7 @@
                 return location; // e.g. [50.5, 30.5, 0.2], // lat, lng, intensity
               });
 
-           var heat = L.heatLayer(locations, { minOpacity: 0.4, max: 0.45, maxZoom: 20, radius: 30, blur: 15, gradient: {0.4: '#709E87', 0.85: '#709E87', 1: '#D8DA26'}, 
+           var heat = L.heatLayer(locations, { minOpacity: 0.5, max: 0.45, maxZoom: 20, radius: 30, blur: 15, gradient: {0.4: '#ab809d', 0.85: '#c24e9d', 1: '#f00c9c'}, 
          });
                    
            
@@ -263,13 +264,13 @@
             map.attributionControl.addAttribution('Арендные ставки; <a href="https://colliersinvest.by/">Коллиерз</a>');
        
         // legend
-        var legend = L.control({position: 'bottomright'});
+        var legend = L.control({position: 'bottomright', title: "Ставки EUR/месяц без НДС"});
         
         legend.onAdd = function (map) {
         
                 var div = L.DomUtil.create('div', 'info legend');
                 var grades = [0,1, 5, 8, 10, 12, 14, 18, 22];
-                var labels = [];
+                var labels = ['<strong> Ставки EUR/месяц <br> без НДС </strong>'];
                 var from, to;
         
                 for (var i = 0; i < grades.length; i++) {
