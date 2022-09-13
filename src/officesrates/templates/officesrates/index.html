@@ -31,63 +31,71 @@
         </style>
     
         <style>#map { position: absolute; right: 0; top:0; height: 100vh; width:300vh }
-    .info { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
-    .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
-    .popupCustom .leaflet-popup-tip,
-    .leaflet-sidebar {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-    .leaflet-sidebar-tabs {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-    .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-    .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-    .fa fa-bars {width: 200px; }
-    .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-    .popupCustom .leaflet-popup-content-wrapper { line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 14px/16px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
-    .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
-    .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
+            .info { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+            .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+            .popupCustom .leaflet-popup-tip,
+            .leaflet-sidebar {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar-tabs {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .fa fa-bars {width: 200px; }
+            .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .popupCustom .leaflet-popup-content-wrapper { line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 14px/16px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
+            .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
+            .leaflet-sidebar-header {background-color: #496D73}
+            .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
         </style>
 </head>
 <body>
-<div id="side-bar" class="leaflet-sidebar">   
-    <div id="divFilterType" class="leaflet-sidebar-tabs">
-        <h4> Категория </h4> 
-        <div class="fa fa-bars">
-            <input type='radio' name='fltType' value='ALL' checked>Все
-        </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltType' value='Existing'>Существующие
+    <div id="side-bar" class="leaflet-sidebar">   
+        <div id="divFilterType" class="leaflet-sidebar-tabs">
+            <h1 class="leaflet-sidebar-header">
+                Фильтры
+                <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+            </h1>
+            <p>
+                <script> L.control.sidebar({ autopan: true })</script>
+            </p>
+            <h4> Категория </h4> 
+            <div class="fa fa-bars">
+                <input type='radio' name='fltType' value='ALL' checked>Все
             </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltType' value='Pipeline'>В стадии строительства
-        </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltType' value='Completed in I HY 2022'>Завершенные в 2022
-        </div>
-            <h4> Cтавки, EUR/кв.м </b><br>в месяц без НДС </h4> 
-        <div class="fa fa-bars">
-            <input type='radio' name='fltRent' value='ALL' checked>Все
-        </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltRent' value='2' >Нет данных
-        </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltRent' value='5.0'>До 5
+            <div class="fa fa-bars">
+                <input type='radio' name='fltType' value='Existing'>Существующие
+                </div>
+            <div class="fa fa-bars">
+                <input type='radio' name='fltType' value='Pipeline'>В стадии строительства
             </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltRent' value='10.0'>5-10
-        </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltRent' value='15.0'>10 - 15
-        </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltRent' value='20.0'>15-20
-        </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltRent' value='25.0'>20-25
-        </div>
-        <div class="fa fa-bars">
-            <input type='radio' name='fltRent' value='30.0'>Болee 25
+            <div class="fa fa-bars">
+                <input type='radio' name='fltType' value='Completed in I HY 2022'>Завершенные в 2022
+            </div>
+                <h4> Cтавки, EUR/кв.м </b><br>в месяц без НДС </h4> 
+            <div class="fa fa-bars">
+                <input type='radio' name='fltRent' value='ALL' checked>Все
+            </div>
+            <div class="fa fa-bars">
+                <input type='radio' name='fltRent' value='2' >Нет данных
+            </div>
+            <div class="fa fa-bars">
+                <input type='radio' name='fltRent' value='5.0'>До 5
+                </div>
+            <div class="fa fa-bars">
+                <input type='radio' name='fltRent' value='10.0'>5-10
+            </div>
+            <div class="fa fa-bars">
+                <input type='radio' name='fltRent' value='15.0'>10 - 15
+            </div>
+            <div class="fa fa-bars">
+                <input type='radio' name='fltRent' value='20.0'>15-20
+            </div>
+            <div class="fa fa-bars">
+                <input type='radio' name='fltRent' value='25.0'>20-25
+            </div>
+            <div class="fa fa-bars">
+                <input type='radio' name='fltRent' value='30.0'>Болee 25
+            </div>
         </div>
     </div>
-</div>
 
         <div id="map" class = "sidebar-map leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"></div>
         <script type="text/javascript" src="{% static "office-Minsk.js"%}"></script>
@@ -130,10 +138,7 @@
         
             info.addTo(map);
            
-            /* global officeData */
-
                 var geojsonMarkerOptions  = {
-                    //feature.properties.Type == 'Pipeline'   ? {dashArray:' 1, 1'} :
                     radius: 12,
                     color: "#000",
                     weight: 1,
@@ -147,6 +152,8 @@
                     'line-height':'0.5',
                     'className' : 'popupCustom' }
                 
+               // ajax geojson for working filters 
+
                 var geojson = L.geoJSON.ajax('{% static "office-Minsk.js.geojson"%}', {
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, geojsonMarkerOptions);
@@ -155,13 +162,15 @@
                     filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
                         layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><br>Ставка: '+feature.properties.RENT_RATE +' eur/м<sup>2</sup></br>'+
-                        '<br>Статус: '+feature.properties.Type+'</br><br>'+ '</br><br>'+ '<img src="{% static 'photo.jpg' %}" alt="My image" width=150>'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
+                        '<br>Статус: '+feature.properties.Type+'</br><br>'+ '</br><br>'+  '<img src=static/'+feature.properties.Img +' style="width:100px;height:100px;">'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
                         //click: onMapClick
                         })
                     }, 
+
+                    // return radius and color 
                     style: function(feature) {
                         var radius_gla = parseInt(Math.sqrt(feature.properties.GLA/100));
                         return parseFloat(feature.properties.RENT_RATE) > 22 ? {color:'#342B47', radius: radius_gla} :
@@ -249,11 +258,14 @@
             }
           }).addTo(map);
 
+        // disclamer 
+
             map.attributionControl.addAttribution('Арендные ставки; <a href="https://colliersinvest.by/">Коллиерз</a>');
-                
-            var legend = L.control({position: 'bottomright'});
+       
+        // legend
+        var legend = L.control({position: 'bottomright'});
         
-            legend.onAdd = function (map) {
+        legend.onAdd = function (map) {
         
                 var div = L.DomUtil.create('div', 'info legend');
                 var grades = [0,1, 5, 8, 10, 12, 14, 18, 22];
@@ -273,9 +285,9 @@
                 return div;
             };
         
-            legend.addTo(map);
-           
-            var baseLayers = {
+        legend.addTo(map);
+        // layers    
+        var baseLayers = {
                 "Ставки": tiles,
                 };
             
@@ -284,9 +296,10 @@
                 };
             
             L.control.layers(baseLayers, overlays).addTo(map);
-           
-        
-        
+                   
+            
         </script>
     </body>
 </html>
+
+
