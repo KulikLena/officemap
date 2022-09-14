@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
         <script src= "{% static "leaflet-src.js"  %}"></script> 
+        <script type="{% static "text/javascript" src="https://unpkg.com/default-passive-events"%}"></script>
         <script src="{% static "leaflet.ajax.min.js" %}"></script>
         <script src="{% static "jquery-3.2.0.min.js" %}"></script> 
         <script src="{% static "leaflet.reachability.js" %}"></script>
@@ -34,7 +35,7 @@
             .info { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
             .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
             .popupCustom .leaflet-popup-tip,
-            .leaflet-sidebar {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar {closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .leaflet-sidebar-tabs {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
@@ -43,20 +44,22 @@
             .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
             .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
-            .leaflet-sidebar-header {background-color: #496D73}
+            .leaflet-sidebar-header {background-color: #496D73; text-align: justify}
+            .fa-caret-left:before {content: "\25C0"}
+            .leaflet-sidebar-close {position: relative; float:right;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
         </style>
 </head>
 <body>
-    <div id="side-bar" class="leaflet-sidebar">   
+    <div id="sidebar" class="leaflet-sidebar">   
         <div id="divFilterType" class="leaflet-sidebar-tabs">
-            <h1 class="leaflet-sidebar-header">
+            <h1 class="leaflet-sidebar-header"  >
                 Фильтры
-                <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+                <span class="leaflet-sidebar-close" > 
+                    <i id ="close" class="fa fa-caret-left" onclick="closeNav()"></i>
+                    <br></br>
+                </span>
             </h1>
-            <p>
-                <script> L.control.sidebar({ autopan: true })</script>
-            </p>
             <h4> Категория </h4> 
             <div class="fa fa-bars">
                 <input type='radio' name='fltType' value='ALL' checked>Все
@@ -103,6 +106,7 @@
         <script type="text/javascript">
 
             var map = L.map('map').setView([53.896778277043836, 27.56520771701336], 12);
+            L.control.sidebar({ autopan: true })
         
             var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/lenakulik/cl4gubhle000114qtkjq2kz8f/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGVuYWt1bGlrIiwiYSI6ImNranVqYnhxMDAzZHgyc2xncTI2ZTJlaWIifQ.__lIWTKzeHrjT0FABCVsjw', {
                 maxZoom: 19,
@@ -162,12 +166,13 @@
                     filter:filterOfficeByType, 
                     filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
+                        img_url = "static/"+feature.properties.Img
                         layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><br><b>Адрес:</b> '+feature.properties.description +' </br>'+
-                        '<br><b>Статус: </b>'+feature.properties.Type+'</br><br>'+ '</br><br>'+  '<img src="{% static 'photo.jpg' %}" width=100">'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
+                        '<br><b>Статус: </b>'+feature.properties.Type+'</br><br>'+ '</br><br>'+ "<img src="+img_url+">"+ '</br><br>'+	
+                        '<a href="tel:123-456-7890p123">Позвонить: Максим Василевский</a>'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
-                        //click: onMapClick
                         })
                     }, 
 
@@ -297,8 +302,19 @@
                 };
             
             L.control.layers(baseLayers, overlays).addTo(map);
-                   
-            
+
+            function closeNav() {
+                document.getElementById("sidebar").style.width = "50px";
+                document.getElementById("sidebar").style.zoom = "0.7";
+                //document.getElementById("sidebar").style.font = '9px';
+            };
+
+            function openNav() {
+                document.getElementById("sidebar").style.width = "200px";
+                document.getElementById("sidebar").style.zoom = "1.0";
+                       };
+              
+      
         </script>
     </body>
 </html>

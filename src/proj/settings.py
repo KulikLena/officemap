@@ -125,4 +125,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LEAFLET_CONFIG = {
+    'FORCE_IMAGE_PATH': True
+}
 

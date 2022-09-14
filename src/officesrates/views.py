@@ -12,6 +12,9 @@ def offices_map(request):
 def vilnius_map(request):
     template_name='officesrates/vilnius.html' 
     return render(request, template_name, {})
+def sidebar(request):
+    template_name='officesrates/index1.html' 
+    return render(request, template_name, {})
 
 def huff(request):
     template_name='officesrates/huff.html' 
