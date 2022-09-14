@@ -1,4 +1,4 @@
-var officeData ={
+var officeData = {
     "type": "FeatureCollection",
     "name": "data-fu0eW-csv",
     "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },

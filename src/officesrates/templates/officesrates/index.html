@@ -35,7 +35,7 @@
             .info { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
             .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
             .popupCustom .leaflet-popup-tip,
-            .leaflet-sidebar {closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar {draggable: true; closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .leaflet-sidebar-tabs {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
@@ -45,7 +45,7 @@
             .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
             .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
             .leaflet-sidebar-header {background-color: #496D73; text-align: justify}
-            .fa-caret-left:before {content: "\25C0"}
+            .fa-caret-left:before {content: "\25C0\25BA"}
             .leaflet-sidebar-close {position: relative; float:right;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
         </style>
@@ -53,12 +53,11 @@
 <body>
     <div id="sidebar" class="leaflet-sidebar">   
         <div id="divFilterType" class="leaflet-sidebar-tabs">
-            <h1 class="leaflet-sidebar-header"  >
-                Фильтры
-                <span class="leaflet-sidebar-close" > 
-                    <i id ="close" class="fa fa-caret-left" onclick="closeNav()"></i>
-                    <br></br>
+            <h1 class="leaflet-sidebar-header">
+                <span id ="close" class="leaflet-sidebar-close" > 
+                    <i class="fa fa-caret-left" onclick="closeNav()"></i>
                 </span>
+                Фильтры
             </h1>
             <h4> Категория </h4> 
             <div class="fa fa-bars">
@@ -98,6 +97,10 @@
             <div class="fa fa-bars">
                 <input type='radio' name='fltRent' value='30.0'>Болee 25
             </div>
+            <h4 style= "font-size:30px;">
+            <i class="fa fa-caret-left" onclick="closeNav()"></i>
+            </h4>
+
         </div>
     </div>
 
@@ -303,17 +306,17 @@
             
             L.control.layers(baseLayers, overlays).addTo(map);
 
-            function closeNav() {
-                document.getElementById("sidebar").style.width = "50px";
-                document.getElementById("sidebar").style.zoom = "0.7";
-                //document.getElementById("sidebar").style.font = '9px';
+            function closeNav() { 
+                if (document.getElementById("sidebar").style.zoom == "0.7") {
+                        document.getElementById("sidebar").style.width = "200px";
+                        document.getElementById("sidebar").style.zoom = "1.0";
+                        } else {
+                            document.getElementById("sidebar").style.width = "50px";
+                            document.getElementById("sidebar").style.zoom = "0.7";
+                            document.getElementById("close").style.content = "/25B7";
+                        }
+                                      
             };
-
-            function openNav() {
-                document.getElementById("sidebar").style.width = "200px";
-                document.getElementById("sidebar").style.zoom = "1.0";
-                       };
-              
       
         </script>
     </body>
