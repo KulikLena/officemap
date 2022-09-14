@@ -29,6 +29,7 @@
                 width: 600px;
                 max-width: 100%;
                 max-height: 100%;
+                font-family: 'Montserrat';
             }
         </style>
     
@@ -141,7 +142,7 @@
             };
         
             info.update = function (props) {
-                this._div.innerHTML = '<h4> Ставки аренды'+ '<br>' +'в офисах Минска</h4>'+'<br> <img src="{% static 'colliers.png' %}" width=100 ><br />' + (props ?
+                this._div.innerHTML = '<h4> Ставки аренды'+ '<br>' +'в офисах Минска</h4>'+'<br> <a href="https://colliersoffice.by/"><img src="{% static 'colliers.png' %}" width=100 ></a><br />' + (props ?
                     '<b><br>' + props.Name + '</b><br />' + props.description +'</b><br>'+ '</b>': '' );
             };
         
@@ -170,9 +171,9 @@
                     filter:filterOfficeByType, 
                     filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
-                        img_url = "static/"+feature.properties.Img
+                        img_url = "/static/"+feature.properties.Img
                         layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><br><b>Адрес:</b> '+feature.properties.description +' </br>'+
-                        '<br><b>Статус: </b>'+feature.properties.Type+'</br><br>'+ '</br><br>'+ "<img src="+img_url+">"+ '</br><br>'+	
+                        '<br><b>Статус: </b>'+feature.properties.Type+'</br><br>'+ '</br><br>'+ "<img src="+img_url+" width=150>"+ '</br><br>'+	
                         '<a href="tel:123-456-7890p123">Позвонить: Максим Василевский</a>'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,
