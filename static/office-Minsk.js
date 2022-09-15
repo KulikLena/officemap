@@ -122,4 +122,3 @@ var officeData = {
     { "type": "Feature", "properties": { "Name": "МФК на Немиге", "description": "ул. Немига", "Lat": "53.89865502", "Lon": "27.54126226", "Title": "", "ID": "117.0", "GLA": "23200", "CLASS": "B1", "RENT_RATE": "1", "Type": "В стадии строительства", "Img": "117.jpg" }, "geometry": { "type": "Point", "coordinates": [ 27.54126226, 53.89865502 ] } }
     ]
     }
-    

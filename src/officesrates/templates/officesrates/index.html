@@ -22,34 +22,34 @@
             html, body {
                 height: 100%;
                 margin: 0;
-                font-family: 'Montserrat';
+                font-family: Verdana, sans-serif;
             }
             .leaflet-container {
                 height: 400px;
                 width: 600px;
                 max-width: 100%;
                 max-height: 100%;
-                font-family: 'Montserrat';
+                font-family: 'Verdana';
             }
         </style>
     
         <style>#map { position: absolute; right: 0; top:0; height: 100vh; width:300vh }
-            .info { padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+            .info { padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
             .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
             .popupCustom .leaflet-popup-tip,
-            .leaflet-sidebar {draggable: true; closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .leaflet-sidebar-tabs {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar {draggable: true; closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar-tabs {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .fa fa-bars {width: 200px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
             .leaflet-popup-content {line-height:100%; }
-            .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Montserrat, Montserrat, Montserrat;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
-            .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
+            .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Verdana, Verdana, Verdana;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
+            .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
             .leaflet-sidebar-header {background-color: #496D73; text-align: justify}
-            .fa-caret-left:before {content: "\25C0\25B6"}
+            .fa-caret-left:before {content: "\25C4\25BA"}
             .leaflet-sidebar-close {position: relative; float:right;}
-            .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Montserrat, Montserrat, Montserrat; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
+            .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
         </style>
 </head>
 <body>
@@ -99,7 +99,7 @@
             <div class="fa fa-bars">
                 <input type='radio' name='fltRent' value='30.0'>Болee 25
             </div>
-            <h4 style= "font-size:30px;">
+            <h4 style= "font-size:20px;">
             <i class="fa fa-caret-left" onclick="closeNav()"></i>
             </h4>
 
@@ -140,10 +140,12 @@
                 this.update();
                 return this._div;
             };
-        
+            //dynamic pointer
+
             info.update = function (props) {
-                this._div.innerHTML = '<h4> Ставки аренды'+ '<br>' +'в офисах Минска</h4>'+'<br> <a href="https://colliersoffice.by/"><img src="{% static 'colliers.png' %}" width=100 ></a><br />' + (props ?
-                    '<b><br>' + props.Name + '</b><br />' + props.description +'</b><br>'+ '</b>': '' );
+                this._div.innerHTML = '<h4> Ставки аренды'+ '<br>' +'в офисах Минска</h4>'+
+                '<br> <a href="https://colliersoffice.by/"><img src="{% static 'colliers.png' %}" width=100 ></a><br />' 
+                + (props ? '<b><br>' + props.Name + '</b><br />' + props.description +'</b><br>'+ '</b>': '' );
             };
         
             info.addTo(map);
@@ -250,15 +252,16 @@
                 var popup = L.popup();
             
        // Плотность офисной недвижимости
+       
             var locations = officeData.features.map(function(rat) {
                 // the heatmap plugin wants an array of each location
                 var location = rat.geometry.coordinates.reverse();
                 var radius_gla = parseInt(Math.sqrt(rat.properties.GLA/100))
                 location.push(radius_gla);
-                return location; // e.g. [50.5, 30.5, 0.2], // lat, lng, intensity
+                return radius_gla, location; // e.g. [50.5, 30.5, 0.2], // lat, lng, intensity
               });
 
-           var heat = L.heatLayer(locations, { minOpacity: 0.5, max: 0.45, maxZoom: 20, radius: 30, blur: 15, gradient: {0.4: '#ab809d', 0.85: '#c24e9d', 1: '#f00c9c'}, 
+           var heat = L.heatLayer(locations, { minOpacity: 0.9, max: 0.45, maxZoom: 20, radius: location.radius_gla, blur: 10, gradient: {0.4: '#ab809d', 0.85: '#c24e9d', 1: '#f00c9c'}, 
          });
                    
            

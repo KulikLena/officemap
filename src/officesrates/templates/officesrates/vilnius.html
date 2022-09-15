@@ -163,15 +163,15 @@
                 });
             }
 
-           var locations = officeData.features.map(function(rat) {
+        //    var locations = residential_data.features.map(function(rat) {
                 // the heatmap plugin wants an array of each location
-                var location = rat.geometry.coordinates.reverse();
-                location.push(0.1);
-                return location; // e.g. [50.5, 30.5, 0.2], // lat, lng, intensity
-              });
+        //        var location = rat.geometry.coordinates.reverse();
+        //        location.push(0.1);
+         //       return location; // e.g. [50.5, 30.5, 0.2], // lat, lng, intensity
+          //    });
 
-            var heat = L.heatLayer(locations, { minOpacity: 0.0, max: 0.5, maxZoom: 15, radius: 50, blur: 40, gradient: {0.4: 'blue', 0.85: '#709E87', 1: '#342B47'} });
-              map.addLayer(heat);
+         //   var heat = L.heatLayer(locations, { minOpacity: 0.0, max: 0.5, maxZoom: 15, radius: 50, blur: 40, gradient: {0.4: 'blue', 0.85: '#709E87', 1: '#342B47'} });
+          //    map.addLayer(heat);
             
 
             function makemarkers(feature, layer) {
