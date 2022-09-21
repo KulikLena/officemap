@@ -37,17 +37,17 @@
             .info { padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
             .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
             .popupCustom .leaflet-popup-tip,
-            .leaflet-sidebar {draggable: true; closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .leaflet-sidebar-tabs {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar {text-indent: 10px; draggable: true; closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar-tabs {text-indent: 10px; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .fa fa-bars {width: 200px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
+            .fa fa-bars {text-indent: 5px;  margin-left: 10px; width: 200px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
             .leaflet-popup-content {line-height:100%; }
             .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Verdana, Verdana, Verdana;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
             .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
             .leaflet-sidebar-header {background-color: #496D73; text-align: justify}
-            .fa-caret-left:before {content: "\25C4\25BA"}
+            .fa-caret-left:before {content: "\21C4"}
             .leaflet-sidebar-close {position: relative; float:right;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
         </style>
@@ -173,10 +173,10 @@
                     filter:filterOfficeByType, 
                     filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
-                        img_url = "/static/"+feature.properties.Img
-                        layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><br><b>Адрес:</b> '+feature.properties.description +' </br>'+
-                        '<br><b>Статус: </b>'+feature.properties.Type+'</br><br>'+ '</br><br>'+ "<img src="+img_url+" width=150>"+ '</br><br>'+	
-                        '<a href="tel:123-456-7890p123">Позвонить: Максим Василевский</a>'+'</br><br>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></br>'), customOptions);
+                        img_url = "/static/images/"+feature.properties.Img
+                        layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><h6><b>Адрес:</b> '+feature.properties.description +' </h6>'+
+                        '<h6><b>Статус: </b>'+feature.properties.Type+'</h6><h6>'+ '</h6><h6>'+ "<img src="+img_url+" width=150>"+ '</h6><h6>'+	
+                        '<a href="tel:123-456-7890p123">Позвонить: Максим Василевский</a>'+'</h6><h6>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></h6>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
