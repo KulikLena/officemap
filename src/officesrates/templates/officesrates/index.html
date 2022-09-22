@@ -48,6 +48,7 @@
             .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
             .leaflet-sidebar-header {background-color: #496D73; text-align: justify}
             .fa-caret-left:before {content: "\21C4"}
+            .btn-primary {background-color: #496D73 !important; font: 12px/14px Verdana, Verdana, Verdana !important}
             .leaflet-sidebar-close {position: relative; float:right;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
         </style>
@@ -99,6 +100,11 @@
             <div class="fa fa-bars">
                 <input type='radio' name='fltRent' value='30.0'>Болee 25
             </div>
+            <h4>
+            <div >
+                <a href="/vacancy/" target="_parent"><button type="button" class="btn btn-primary">Вакантные</button></a>
+            </div>
+            </h4>
             <h4 style= "font-size:20px;">
             <i class="fa fa-caret-left" onclick="closeNav()"></i>
             </h4>
@@ -111,7 +117,7 @@
         <script type="text/javascript">
 
             var map = L.map('map').setView([53.896778277043836, 27.56520771701336], 12);
-            L.control.sidebar({ autopan: true })
+            L.control.sidebar({ autopan: true });
         
             var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/lenakulik/cl4gubhle000114qtkjq2kz8f/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGVuYWt1bGlrIiwiYSI6ImNranVqYnhxMDAzZHgyc2xncTI2ZTJlaWIifQ.__lIWTKzeHrjT0FABCVsjw', {
                 maxZoom: 19,
@@ -154,7 +160,7 @@
                     radius: 12,
                     color: "#000",
                     weight: 1,
-                    opacity: 1,
+                    opacity: 0.8,
                     fillOpacity: 0.8
                 };
 

@@ -8,7 +8,8 @@ urlpatterns = [
     path('huff/', views.huff),
     path('vilnius/', views.vilnius_map),
     path('map_density/', views.offices_map_density),
-    path('sidebar/', views.sidebar)
+    path('sidebar/', views.sidebar), 
+    path('vacancy/', views.vacancy_map)
 ]
 
 

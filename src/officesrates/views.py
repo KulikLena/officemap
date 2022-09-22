@@ -8,6 +8,9 @@ from django.views.generic import ListView, TemplateView, DetailView, CreateView,
 def offices_map(request):
     template_name='officesrates/index.html' 
     return render(request, template_name, {})
+def vacancy_map(request):
+    template_name='officesrates/vacancy.html' 
+    return render(request, template_name, {})
 
 def vilnius_map(request):
     template_name='officesrates/vilnius.html' 
