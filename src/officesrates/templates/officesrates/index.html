@@ -39,28 +39,29 @@
             .info { padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
             .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
             .popupCustom .leaflet-popup-tip,
-            .leaflet-sidebar {text-indent: 10px; draggable: true; closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .leaflet-sidebar-tabs {text-indent: 10px; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .sidebar-content {width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .leaflet-control-layers-list {color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar {overflow-y: auto; text-indent: 10px; draggable: true; closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar-tabs {overflow-y: auto; text-indent: 10px; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .sidebar-content {overflow-y: auto; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-control-layers-list {overflow-y: auto; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .fa fa-bars {text-indent: 5px;  margin-left: 10px; width: 200px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
             .leaflet-popup-content {line-height:100%; }
             .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Verdana, Verdana, Verdana;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
             .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
             .leaflet-sidebar-header {background-color: #496D73; text-align: justify}
-            .fa-caret-left:before {content: "\21C4"}
+            .fa-caret-left {content: url('/static/200601.png'); width: 25px; margin-top: 12px;}
             .btn-primary {background-color: #496D73 !important; font: 12px/14px Verdana, Verdana, Verdana !important}
             .leaflet-sidebar-close {position: relative; float:right;}
+            .leaflet-sidebar-close-right {position: relative; float:left;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
         </style>
 </head>
 <body>
     <div id="sidebar" class="leaflet-sidebar">   
-        <div id="divFilterType" class="leaflet-sidebar-tabs">
+        <div id="divFilter" class="leaflet-sidebar-tabs">
             <h1 class="leaflet-sidebar-header">
-                <span id ="close" class="leaflet-sidebar-close" > 
-                    <i class="fa fa-caret-left" onclick="closeNav()"></i>
+                <span class="leaflet-sidebar-close" > 
+                    <i id ="close" class="fa fa-caret-left"  onclick="closeNav()"></i>
                 </span>
                 Фильтры
             </h1>
@@ -107,9 +108,9 @@
                 <a href="/vacancy/" target="_parent"><button type="button" class="btn btn-primary">Вакантные</button></a>
             </div>
             </h4>
-            <h4 style= "font-size:20px;">
-            <i class="fa fa-caret-left" onclick="closeNav()"></i>
-            </h4>
+            <span class="leaflet-sidebar-close-right"  > 
+                <i id ="close" class="fa fa-caret-left" float= "left" onclick="closeNav()"></i>
+            </span>
 
         </div>
     </div>
@@ -119,9 +120,7 @@
         <script type="text/javascript">
 
             var map = L.map('map').setView([53.896778277043836, 27.56520771701336], 12);
-            L.control.sidebar({ autopan: true });
-        
-            var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/lenakulik/cl4gubhle000114qtkjq2kz8f/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGVuYWt1bGlrIiwiYSI6ImNranVqYnhxMDAzZHgyc2xncTI2ZTJlaWIifQ.__lIWTKzeHrjT0FABCVsjw', {
+                var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/lenakulik/cl4gubhle000114qtkjq2kz8f/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGVuYWt1bGlrIiwiYSI6ImNranVqYnhxMDAzZHgyc2xncTI2ZTJlaWIifQ.__lIWTKzeHrjT0FABCVsjw', {
                 maxZoom: 19,
                 attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
             }).addTo(map);
@@ -321,12 +320,14 @@
 
             function closeNav() { 
                 if (document.getElementById("sidebar").style.zoom == "0.7") {
-                        document.getElementById("sidebar").style.width = "200px";
-                        document.getElementById("sidebar").style.zoom = "1.0";
+                        document.getElementById("sidebar").style.width = "200px"
+                        document.getElementById("sidebar").style.zoom = "1.0"
+                        document.getElementById("close").style.content = "url('/static/200601.png')"
                         } else {
-                            document.getElementById("sidebar").style.width = "50px";
-                            document.getElementById("sidebar").style.zoom = "0.7";
-                            document.getElementById("close").style.content = "/25B7";
+                            document.getElementById("sidebar").style.width = "50px"
+                            document.getElementById("sidebar").style.zoom = "0.7"
+                           // document.getElementById("divFilter").style.visibility = "hidden";
+                            document.getElementById("close").style.content = "url('/static/200602.png')"
                         }
                                       
             };
