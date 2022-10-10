@@ -9,8 +9,9 @@ urlpatterns = [
     path('vilnius/', views.vilnius_map),
     path('map_density/', views.offices_map_density),
     path('sidebar/', views.sidebar), 
-    path('vacancy/', views.vacancy_map)
-]
+    path('vacancy/', views.vacancy_map), 
+    path('anchors/', views.anchors_map)
+    ]
 
 
 

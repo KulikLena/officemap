@@ -12,6 +12,10 @@ def vacancy_map(request):
     template_name='officesrates/vacancy.html' 
     return render(request, template_name, {})
 
+def anchors_map(request):
+    template_name='officesrates/anchors.html' 
+    return render(request, template_name, {})
+
 def vilnius_map(request):
     template_name='officesrates/vilnius.html' 
     return render(request, template_name, {})
