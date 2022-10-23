@@ -8,6 +8,11 @@ from django.views.generic import ListView, TemplateView, DetailView, CreateView,
 def offices_map(request):
     template_name='officesrates/index.html' 
     return render(request, template_name, {})
+
+def offices_map_byn(request):
+    template_name='officesrates/index_byn.html' 
+    return render(request, template_name, {})
+
 def vacancy_map(request):
     template_name='officesrates/vacancy.html' 
     return render(request, template_name, {})
@@ -19,6 +24,7 @@ def anchors_map(request):
 def vilnius_map(request):
     template_name='officesrates/vilnius.html' 
     return render(request, template_name, {})
+
 def sidebar(request):
     template_name='officesrates/index1.html' 
     return render(request, template_name, {})

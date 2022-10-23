@@ -28,7 +28,7 @@
 
 	<script type="text/javascript" src="{% static "vilnius.geojson"%}"></script>
 	
-	<script type="text/javascript" src="{% static "maxima.js"%}"></script>
+	<script type="text/javascript" src="{% static "retaildata.js"%}"></script>
 	<script type="text/javascript" src="{% static "vilnius_residential_land.geojson"%}"></script>
 
 	
@@ -67,7 +67,7 @@
 		malls.features.forEach((mall, j) => {
 			var distance = turf.distance([center.geometry.coordinates[1], center.geometry.coordinates[0]], [mall.geometry.coordinates[1], mall.geometry.coordinates[0]])
 			var attr = malls.features[j].properties.area / (distance*distance)
-			obj[mall.properties.name] = attr
+			obj[mall.properties.Name] = attr
 			sum += attr
 		})	
 		hex.properties.prob = obj['Object'] / sum

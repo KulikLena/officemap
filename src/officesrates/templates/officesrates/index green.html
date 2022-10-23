@@ -39,18 +39,18 @@
             .info { padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
             .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
             .popupCustom .leaflet-popup-tip,
-            .leaflet-sidebar {overflow-y: auto; text-indent: 10px; draggable: true; closeButton: true; autopah: true; width: 220px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .leaflet-sidebar-tabs {overflow-y: auto; text-indent: 10px; width: 220px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar {overflow-y: auto; text-indent: 10px; draggable: true; closeButton: true; autopah: true; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+            .leaflet-sidebar-tabs {overflow-y: auto; text-indent: 10px; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .sidebar-content {overflow-y: auto; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .leaflet-control-layers-list {overflow-y: auto; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .fa fa-bars {text-indent: 5px;  margin-left: 10px; width: 220px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
+            .fa fa-bars {text-indent: 5px;  margin-left: 10px; width: 200px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
             .leaflet-popup-content {line-height:100%; }
             .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Verdana, Verdana, Verdana;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
             .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
-            .leaflet-sidebar-header {width: 240px; background-color: #244090; text-align: justify}
+            .leaflet-sidebar-header {background-color: #496D73; text-align: justify}
             .fa-caret-left {content: url('/static/200601.png'); width: 25px; margin-top: 12px;}
-            .btn-primary {background-color: #244090 !important; font: 12px/14px Verdana, Verdana, Verdana !important}
+            .btn-primary {background-color: #496D73 !important; font: 12px/14px Verdana, Verdana, Verdana !important}
             .leaflet-sidebar-close {position: relative; float:right;}
             .leaflet-sidebar-close-right {position: relative; float:left;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
@@ -65,57 +65,53 @@
                 </span>
                 Фильтры
             </h1>
-            <h4> <b> Категория </b> </h4> 
-            <h6>
+            <h4> Категория </h4> 
             <div class="fa fa-bars">
-                <input type='radio' name='fltType' value='ALL' checked> Все
+                <input type='radio' name='fltType' value='ALL' checked>Все
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltType' value='Существующий'> Существующие
+                <input type='radio' name='fltType' value='Существующий'>Существующие
                 </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltType' value='В стадии строительства'> Строительство
+                <input type='radio' name='fltType' value='В стадии строительства'>В стадии строительства
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltType' value='Завершен в 2022'> Завершенные в 2022 
+                <input type='radio' name='fltType' value='Завершен в 2022'>Завершенные в 2022
             </div>
-            </h6>
-                <h4> <b> Cтавки, EUR/кв.м </b> </h4> 
-            <h6>
+                <h4> Cтавки, EUR/кв.м </b><br>в месяц без НДС </h4> 
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='ALL' checked> Все
+                <input type='radio' name='fltRent' value='ALL' checked>Все
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='2' > Нет данных
+                <input type='radio' name='fltRent' value='2' >Нет данных
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='5.0'> До 5
+                <input type='radio' name='fltRent' value='5.0'>До 5
                 </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='10.0'> 5-10
+                <input type='radio' name='fltRent' value='10.0'>5-10
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='15.0'> 10 - 15
+                <input type='radio' name='fltRent' value='15.0'>10 - 15
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='20.0'> 15-20
+                <input type='radio' name='fltRent' value='20.0'>15-20
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='25.0'> 20-25
+                <input type='radio' name='fltRent' value='25.0'>20-25
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='30.0'> Болee 25
+                <input type='radio' name='fltRent' value='30.0'>Болee 25
             </div>
-            </h6>
             <h4>
             <div >
-                <a href="/map_byn/" target="_parent"><button type="button" class="btn btn-primary">BYN</button></a>
+                <a href="/vacancy/" target="_parent"><button type="button" class="btn btn-primary">Вакантные</button></a>
             </div>
             </h4>
             <h4>
             <div >
-                <a href="/vacancy/" target="_parent"><button type="button" class="btn btn-primary">Вакантные</button></a>
-            </div>         
+                <a href="/anchors/" target="_parent"><button type="button" class="btn btn-primary">Якорные арендаторы</button></a>
+            </div>
             </h4>
             <span class="leaflet-sidebar-close-right"  > 
                 <i id ="close" class="fa fa-caret-left" float= "left" onclick="closeNav()"></i>
@@ -136,15 +132,15 @@
         
              // get color depending on rent rate  value
                 function getColor(d) {
-                    return d > 22 ? '#182B62' :
-                        d > 18  ? '#244090' :
-                        d > 14  ? '#345CCC' :
-                        d > 12  ? '#3055BE' :
-                        d > 10   ? '#0C8ABC' :
-                        d > 8   ? '#0E9ED9' :
-                        d > 5   ? '#B8E4F4' :
-                        d > 1   ? '#FFCC00' : 
-                        d == 1  ? '#9EA1A1':
+                    return d > 22 ? '#342B47' :
+                        d > 18  ? '#4B4068' :
+                        d > 14  ? '#496D73' :
+                        d > 12  ? '#507980' :
+                        d > 10   ? '#709E87' :
+                        d > 8   ? '#99BE95' :
+                        d > 5   ? '#C4CA8A' :
+                        d > 1   ? '#D8DA26' : 
+                        d == 1  ? '#D8DA26':
                         '#808080';
                 }
         
@@ -190,9 +186,9 @@
                     filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
                         img_url = "/static/images/"+feature.properties.Img
-                        layer.bindPopup(('<h4><b>'+feature.properties.Name+'</b></h4><h6><b>Адрес:</b> '+feature.properties.description +' </h6>'+
+                        layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><h6><b>Адрес:</b> '+feature.properties.description +' </h6>'+
                         '<h6><b>Статус: </b>'+feature.properties.Type+'</h6><h6>'+ '</h6><h6>'+ "<img src="+img_url+" width=150>"+ '</h6><h6>'+	
-                        '<a href="tel:+375293768637">Уточнить детали по телефону </a>'+'</h6><h6>'+'<a href="https://colliersoffice.by/"> Получить презентацию </a></h6>'), customOptions);
+                        '<a href="tel:123-456-7890p123">Позвонить: Максим Василевский</a>'+'</h6><h6>'+'<a href="https://colliersoffice.by/"> Заказать звонок </a></h6>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -202,15 +198,15 @@
                     // return radius and color 
                     style: function(feature) {
                         var radius_gla = parseInt(Math.sqrt(feature.properties.GLA/100));
-                        return parseFloat(feature.properties.RENT_RATE) > 22 ? {color:'#182B62', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE) > 18  ? {color:'#244090', radius: radius_gla}:
-                        parseFloat(feature.properties.RENT_RATE) > 14  ? {color:'#345CCC', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE) > 12  ? {color:'#3055BE', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE) > 10  ? {color:'#0C8ABC', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE) > 8   ? {color:'#0E9ED9', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE) > 5   ? {color:'#B8E4F4', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE) > 1   ? {color:'#FFCC00', radius: radius_gla} : 
-                        parseFloat(feature.properties.RENT_RATE) == 1   ? {color:'#9EA1A1', radius: radius_gla, fillOpacity:0, weight:1} : 
+                        return parseFloat(feature.properties.RENT_RATE) > 22 ? {color:'#342B47', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 18  ? {color:'#4B4068', radius: radius_gla}:
+                        parseFloat(feature.properties.RENT_RATE) > 14  ? {color:'#496D73', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 12  ? {color:'#507980', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 10  ? {color:'#709E87', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 8   ? {color:'#99BE95', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 5   ? {color:'#C4CA8A', radius: radius_gla} :
+                        parseFloat(feature.properties.RENT_RATE) > 1   ? {color:'#D8DA26', radius: radius_gla} : 
+                        parseFloat(feature.properties.RENT_RATE) == 1   ? {color:'#808080', radius: radius_gla, fillOpacity:0, weight:1} : 
                         {color:'#D8DA26', radius: radius_gla};
                     },
                     
@@ -318,7 +314,7 @@
         legend.addTo(map);
         // layers    
         var baseLayers = {
-            "OpenStreetMap": tiles,
+                "Ставки": tiles,
                 };
             
             var overlays = {
