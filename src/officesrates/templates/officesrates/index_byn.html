@@ -104,7 +104,7 @@
                 <input type='radio' name='fltRent' value='25.0'> 48-60
             </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='30.0'> Болee 60
+                <input type='radio' name='fltRent' value='31.0'> Болee 60
             </div>
             </h6>
             <h4>
@@ -163,7 +163,7 @@
 
             info.update = function (props) {
                 this._div.innerHTML = '<h4> Ставки аренды'+ '<br>' +'в офисах Минска</h4>'+
-                '<br> <a href="https://colliersoffice.by/"><img src="{% static 'colliers.png' %}" width=100 ></a><br />' 
+                '<br> <a href="https://colliersinvest.by/"><img src="{% static 'colliers.png' %}" width=100 ></a><br />' 
                 + (props ? '<b><br>' + props.Name + '</b><br />' + props.description +'</b><br>'+ '</b>': '' );
             };
         
@@ -193,9 +193,9 @@
                     filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
                         img_url = "/static/images/"+feature.properties.Img
-                        layer.bindPopup(('<h4><b>'+feature.properties.Name+'</b></h4><h6><b>Адрес:</b> '+feature.properties.description +' </h6>'+
+                        layer.bindPopup(('<h4><b>'+feature.properties.Name+'</b></h4><h6><b>Адрес:</b> <br> '+feature.properties.description +' </h6>'+
                         '<h6><b>Статус: </b>'+feature.properties.Type+'</h6><h6>'+ '</h6><h6>'+ "<img src="+img_url+" width=150>"+ '</h6><h6>'+	
-                        '<a href="tel:+375293768637">Уточнить детали по телефону </a>'+'</h6><h6>'+'<a href="https://colliersoffice.by/"> Получить презентацию </a></h6>'), customOptions);
+                        '<a href="tel:+375293768637">Уточнить детали по телефону: <br> +375-29-376-86-37 </a>'+'</h6><h6>'+'<a href="https://colliersoffice.by/"> Получить презентацию </a></h6>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -321,7 +321,7 @@
         legend.addTo(map);
         // layers    
         var baseLayers = {
-                "Ставки": tiles,
+            "OpenStreetMap": tiles,
                 };
             
             var overlays = {
