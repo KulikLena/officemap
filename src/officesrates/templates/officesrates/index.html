@@ -54,6 +54,7 @@
             .leaflet-sidebar-close {position: relative; float:right;}
             .leaflet-sidebar-close-right {position: relative; float:left;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
+            .img:hover { transform: scale(3.0);}
         </style>
 </head>
 <body>
@@ -190,8 +191,8 @@
                     filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
                         img_url = "/static/images/"+feature.properties.Img
-                        layer.bindPopup(('<h4><b>'+feature.properties.Name+'</b></h4><h6><b>Адрес:</b> '+feature.properties.description +' </h6>'+
-                        '<h6><b>Статус: </b>'+feature.properties.Type+'</h6><h6>'+ '</h6><h6>'+ "<img src="+img_url+" width=150>"+ '</h6><h6>'+	
+                        layer.bindPopup(('<h4><b>'+feature.properties.Name+'</b></h4><h6><b>Адрес:</b> <br> '+feature.properties.description +' </h6>'+
+                        '<h6><b>Статус: </b>'+feature.properties.Type+'</h6><h6>'+ '</h6><h6>'+ "<img src="+img_url+" width=150 class='img'>"+ '</h6><h6>'+	
                         '<a href="tel:+375293768637">Уточнить детали по телефону: <br> +375-29-376-86-37 </a>'+'</h6><h6>'+'<a href="https://colliersoffice.by/"> Получить презентацию </a></h6>'), customOptions);
                         layer.on({
                         mouseover: highlightFeature,

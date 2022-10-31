@@ -55,6 +55,7 @@
             .btn-primary {background-color: #25408F !important; font: 12px/14px Verdana, Verdana, Verdana !important}
             .leaflet-sidebar-close {position: relative; float:right;font: 12px/14px Verdana, Verdana, Verdana;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
+            .img:hover { transform: scale(3.0);}
         </style>
 </head>
 <body>
@@ -211,9 +212,9 @@
                         layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><h6><b>Адрес:</b><br> '+feature.properties.description +' </h6>'+
                         '<h6><b>Статус: </b>'+feature.properties.Type+'</h6><h6>'+ '<b>Вакантно: </b>'+ " 0 кв. м"+  '</h6>' +
                             '<h6><b>Якорные арендаторы: </b>'+ '</h6><h6>'+
-                                "<img src="+anchors_url1+" width=70>"+ " " +
-                                "<img src="+anchors_url2+" width=70>"+ " " +
-                                "<img src="+anchors_url3+" width=70>"+'</h6><h6>'+ 
+                                "<img src="+anchors_url1+" width=40 class='img'>"+ " " +
+                                "<img src="+anchors_url2+" width=40 class='img'>"+ " " +
+                                "<img src="+anchors_url3+" width=40 class='img'>"+'</h6><h6>'+ 
                         '<a href="tel:+375293768637">Добавить информацию?<br>+375-29-376-86-37 </a>'+'</h6><h6>'+'<a href="https://colliersoffice.by/"> Получить презентацию </a></h6>'), customOptions);}
                         else {
                             img_url = "/static/images/"+feature.properties.Img
@@ -223,9 +224,9 @@
                             layer.bindPopup(('<h4>'+feature.properties.Name+'</h4><h6><b>Адрес:</b> <br>'+feature.properties.description +' </h6>'+
                             '<h6><b>Статус: </b>'+feature.properties.Type+'</h6><h6>'+ '<b>Вакантно: </b>'+feature.properties.vacancy+ " кв. м"+  '</h6>' +
                                 '<h6><b>Якорные арендаторы: </b>'+ '</h6><h6>'+
-                                    "<img src="+anchors_url1+" width=60>"+ " " +
-                                    "<img src="+anchors_url2+" width=60>"+ " " +
-                                    "<img src="+anchors_url3+" width=60>"+'</h6><h6>'+ 
+                                    "<img src="+anchors_url1+" width=40 class='img'>"+ " " +
+                                    "<img src="+anchors_url2+" width=40 class='img'>"+ " " +
+                                    "<img src="+anchors_url3+" width=40 class='img'>"+'</h6><h6>'+ 
                             '<a href="tel:+375293768637">Добавить информацию?<br>+375-29-376-86-37 </a>'+'</h6><h6>'+'<a href="https://colliersoffice.by/"> Получить презентацию </a></h6>'), customOptions);
 
                         }
@@ -376,7 +377,8 @@
                         document.getElementById("close").style.content = "url('/static/200602.png')"
                     }     
             };
-      
+
+     
         </script>
     </body>
 </html>
