@@ -63,7 +63,7 @@
             .leaflet-sidebar-close {position: relative; float:right;}
             .leaflet-sidebar-close-right {position: relative; float:left;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
-            .img:hover { transform: scale(3.0);}
+            .img:hover { transform: scale(2.0);}
         </style>
 </head>
 <body>
@@ -295,16 +295,8 @@
 
            var heat = L.heatLayer(locations, { minOpacity: 0.9, max: 0.45, maxZoom: 20, radius: location.radius_gla, blur: 10, gradient: {0.4: '#ab809d', 0.85: '#c24e9d', 1: '#f00c9c'}, 
          });
-                   
-           
 
-           var layerGroup = L.geoJSON(officeData, {
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup('<h1>'+feature.properties.name+'</h1><p>name: '+feature.properties.RENT_RATE+'</p>');
-            }
-          }).addTo(map);
-
-        // disclamer 
+         // disclamer 
 
             map.attributionControl.addAttribution('Арендные ставки; <a href="https://colliersinvest.by/">Коллиерз</a>');
        
