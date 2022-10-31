@@ -188,12 +188,17 @@
 
             info.update = function (props) {
                 this._div.innerHTML = '<h4> Вакантность'+ '<br>' +'в офисах Минска</h4>'+
-                '<br> <a href="https://colliersinvest.by/"><img src="{% static 'colliers.png' %}" width=100 ></a><br />' 
-                + (props ? '<b><br>' + props.Name + '</b><br />' + props.description +'</b><br>'+ '</b>': '' );
+                '<br> <a href="https://colliersinvest.by/"><img src="{% static 'colliers.png' %}" width=100 ></a><br />';
             };
                     info.addTo(map);
 
-            // options for popup
+            info1.update = function (props) {
+                    this._div.innerHTML = '<img src="{% static 'sigma.gif' %}" width=300 ></a><br />';
+                    };
+                        info1.addTo(map);
+                    
+
+           // options for popup
                 var customOptions = {
                     'maxWidth': '400',
                     'width': '200',

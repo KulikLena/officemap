@@ -6,6 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('map/', views.OfficeList.as_view()),
     path('map_byn/', views.offices_map_byn),
+    path('pipeline/', views.pipeline),
     path('huff/', views.huff),
     path('vilnius/', views.vilnius_map),
     path('map_density/', views.offices_map_density),

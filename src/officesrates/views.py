@@ -13,6 +13,10 @@ def offices_map_byn(request):
     template_name='officesrates/index_byn.html' 
     return render(request, template_name, {})
 
+def pipeline(request):
+    template_name='officesrates/pipeline.html' 
+    return render(request, template_name, {})
+
 def vacancy_map(request):
     template_name='officesrates/vacancy.html' 
     return render(request, template_name, {})

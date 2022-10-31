@@ -43,14 +43,14 @@
             .leaflet-sidebar-tabs {overflow-y: auto; text-indent: 10px; width: 220px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .sidebar-content {overflow-y: auto; width: 200px; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .leaflet-control-layers-list {overflow-y: auto; color: #777;1 padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-            .fa fa-bars {text-indent: 5px;  margin-left: 10px; width: 200px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
+            .fa fa-bars {text-indent: 5px;  margin-left: 10px; width: 220px; margin-top: 0.5em ;margin-bottom: 0.5em ;}
             .leaflet-popup-content {line-height:100%; }
             .leaflet-control-layers-selector { color: #777; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
             .popupCustom .leaflet-popup-content-wrapper  { width: 200px; line-height:100%; padding: 6px 8px; background: white; color: #234c5e;font: 12px/14px Verdana, Verdana, Verdana;box-shadow: 0 0 15px rgba(0,0,0,0.2);border-radius: 5px; }
             .leaflet-bar { position: relative; float:left; padding: 6px 8px; font: 14px/16px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300} 
             .leaflet-sidebar-header {width: 240px; background-color: #244090; text-align: justify}
             .fa-caret-left {content: url('/static/200601.png'); width: 25px; margin-top: 12px;}
-            .btn-primary {background-color: #244090 !important; font: 12px/14px Verdana, Verdana, Verdana !important}
+            .btn-primary {background-color: #244090 !important; font: 12px/14px Verdana, Verdana, Verdana !important; text-align: left}
             .leaflet-sidebar-close {position: relative; float:right;}
             .leaflet-sidebar-close-right {position: relative; float:left;}
             .contentPanel { width:200px; padding: 6px 8px; font: 12px/14px Verdana, Verdana, Verdana; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; width: 300 } 
@@ -75,55 +75,30 @@
                 <input type='radio' name='fltType' value='Существующий'> Существующие
                 </div>
             <div class="fa fa-bars">
-                <input type='radio' name='fltType' value='В стадии строительства'> Строительство
+                <input type='radio' name='fltType' value='В стадии строительства'> В стадии строительства
             </div>
             <div class="fa fa-bars">
                 <input type='radio' name='fltType' value='Завершен в 2022'> Завершенные в 2022 
             </div>
+              <h4> <br> </h4>
             </h6>
-                <h4> <b> Cтавки, BYN/кв.м </b> </h4> 
-            <h6> <em> По состоянию на 30.09.2022 <br> </em> 
-            <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='ALL' checked> Все
-            </div>
-            <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='2' > Нет данных
-            </div>
-            <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='5.0'> До 12
-                </div>
-            <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='10.0'> 12-24
-            </div>
-            <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='15.0'> 24 -36
-            </div>
-            <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='20.0'> 36-48
-            </div>
-            <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='25.0'> 48-60
-            </div>
-            <div class="fa fa-bars">
-                <input type='radio' name='fltRent' value='31.0'> Болee 60
-            </div>
-            </h6>
+            <h4> <b> Ставки </b> </h4> 
             <h4>
-                <div >
-                    <a href="/map/" target="_parent"><button type="button" class="btn btn-primary">EUR</button></a>
-                </div>
-                </h4>
-                <h4>
-                    <h4> <b> Свободные <p> площади </b> </h4> 
-                <div >
-                    <a href="/vacancy/" target="_parent"><button type="button" class="btn btn-primary">Показать свободные <br> площади</button></a>
-                </div>         
-                </h4>
-                <h4>
-                    <div >
-                        <a href="/pipeline/" target="_parent"><button type="button" class="btn btn-primary">Вернуться на главную</button></a>
-                    </div>
-                </h4>
+            <div >
+                <a href="/map_byn/" target="_parent"><button type="button" class="btn btn-primary">BYN</button></a>
+                <a href="/map/" target="_parent"><button type="button" class="btn btn-primary">EUR</button></a>
+            </div>
+            <h4> <br> </h4>
+            </h4>
+            <h4> <b> Свободные <p> площади </b> </h4> 
+            <h4>
+            <div >
+                <a href="/vacancy/" target="_parent"><button type="button" class="btn btn-primary">Показать свободные <br> площади</button></a>
+            </div>         
+            </h4>
+            <span class="leaflet-sidebar-close-right"  > 
+                <i id ="close" class="fa fa-caret-left" float= "left" onclick="closeNav()"></i>
+            </span>
 
         </div>
     </div>
@@ -137,23 +112,7 @@
                 maxZoom: 19,
                 attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
             }).addTo(map);
-
-            // currency rate as for 31.09.2022 
-            var byn = 2.3956
         
-             // get color depending on rent rate  value
-                function getColor(d) {
-                    return d > 22*byn ? '#182B62' :
-                        d > 18*byn  ? '#244090' :
-                        d > 14*byn  ? '#345CCC' :
-                        d > 12*byn  ? '#3055BE' :
-                        d > 10*byn  ? '#0C8ABC' :
-                        d > 8*byn   ? '#0E9ED9' :
-                        d > 5*byn   ? '#B8E4F4' :
-                        d > 1*byn   ? '#FFCC00' : 
-                        d == 1  ? '#9EA1A1':
-                        '#808080';
-                }
         
             // control that shows state info on hover
             var info = L.control();
@@ -194,7 +153,6 @@
                         return L.circleMarker(latlng, geojsonMarkerOptions);
                     }, 
                     filter:filterOfficeByType, 
-                    filter: filterOfficeByRent,
                     onEachFeature: function (feature, layer) {
                         img_url = "/static/images/"+feature.properties.Img
                         layer.bindPopup(('<h4><b>'+feature.properties.Name+'</b></h4><h6><b>Адрес:</b> <br> '+feature.properties.description +' </h6>'+
@@ -209,16 +167,10 @@
                     // return radius and color 
                     style: function(feature) {
                         var radius_gla = parseInt(Math.sqrt(feature.properties.GLA/100));
-                        return parseFloat(feature.properties.RENT_RATE*byn) > 22*byn ? {color:'#182B62', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE*byn) > 18*byn  ? {color:'#244090', radius: radius_gla}:
-                        parseFloat(feature.properties.RENT_RATE*byn) > 14*byn  ? {color:'#345CCC', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE*byn) > 12*byn  ? {color:'#3055BE', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE*byn) > 10*byn  ? {color:'#0C8ABC', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE*byn) > 8*byn   ? {color:'#0E9ED9', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE*byn) > 5*byn   ? {color:'#B8E4F4', radius: radius_gla} :
-                        parseFloat(feature.properties.RENT_RATE*byn) > 1*byn   ? {color:'#FFCC00', radius: radius_gla} : 
-                        parseFloat(feature.properties.RENT_RATE) == 1   ? {color:'#244090', radius: radius_gla, fillOpacity:0, weight:2} : 
-                        {color:'#D8DA26', radius: radius_gla};
+                        return feature.properties.Type == 'Существующий' ? {color:'#25408F', radius: radius_gla} :
+                                feature.properties.Type == 'В стадии строительства' ? {color:'#0C9ED9', radius: radius_gla}:
+                                feature.properties.Type == 'Завершен в 2022' ? {color:'#ED1B34', radius: radius_gla} :
+                                {color:'#FFD400', radius: radius_gla};
                     },
                     
                 }).addTo(map);
@@ -242,36 +194,15 @@
             function filterOfficeByType(json) {
                 var att=json.properties;
                 var optFilter = $("input[name=fltType]:checked").val();
-                var optFilter2 = $("input[name=fltRent]:checked").val();
-                if (optFilter=='ALL' && optFilter2 == 'ALL') {
+                if (optFilter=='ALL') {
                     return true;
                 } else {
                     return ((att.Type==optFilter)||(optFilter=='ALL')) 
-                     && ((optFilter2=='ALL')||(parseFloat(att.RENT_RATE*byn) <= parseFloat(optFilter2*byn))
-                      && (parseFloat(att.RENT_RATE*byn) > (parseFloat(optFilter2*byn)-5.0*byn)));
+                     
                 }
             }
 
-            // filers on rent_rate
-                $("input[name=fltRent]").click(function(){
-                    officeIDs=[];
-                    geojson.refresh();
-                    });
-            
-                function filterOfficeByRent(json) {
-                    var att=json.properties;
-                    var optFilter = $("input[name=fltType]:checked").val();
-                    var optFilter2 = $("input[name=fltRent]:checked").val();
-                    if (optFilter=='ALL' && optFilter2 == 'ALL') {
-                        return true;
-                        } else {
-                         return ((att.Type==optFilter)||(optFilter=='ALL'))
-                          && ((optFilter2=='ALL')||(parseFloat(att.RENT_RATE*byn) <= parseFloat(optFilter2*byn)) 
-                          && (parseFloat(att.RENT_RATE*byn) > (parseFloat(optFilter2*byn)-5.0*byn)));
-                            }
-                        }
-
-          
+              
                 var popup = L.popup();
             
        // Плотность офисной недвижимости
@@ -300,22 +231,20 @@
             map.attributionControl.addAttribution('Арендные ставки; <a href="https://colliersinvest.by/">Коллиерз</a>');
        
         // legend
-        var legend = L.control({position: 'bottomright', title: "Ставки EUR/месяц без НДС"});
+        var legend = L.control({position: 'bottomright', title: "Категории"});
         
         legend.onAdd = function (map) {
         
                 var div = L.DomUtil.create('div', 'info legend');
-                var grades = [0, Math.round(1*byn), Math.round(5*byn), Math.round(8*byn), Math.round(10*byn), Math.round(12*byn), Math.round(14*byn), Math.round(18*byn), Math.round(22*byn)];
-                var labels = ['<strong> Ставки BYN/месяц <br> без НДС </strong>'];
-                var from, to;
-        
+                var grades = ['Существующие','В стадии строительства', 'Завершенные в 2022'];
+                var colors = ['#25408F','#0C9ED9','#ED1B34'];
+                var labels = ['<strong> Легенда </strong> <br>'];
+                        
                 for (var i = 0; i < grades.length; i++) {
-                    from = grades[i];
-                    to = grades[i + 1];
-        
+      
                     labels.push(
-                        '<i style="background:' + getColor(from + 1) + '"></i> ' +
-                        from + (to ? '&ndash;' + to : '+'));
+                        '<i style="background: ' + colors[i] + '"></i> ' +
+                        grades[i]+'<br>');
                 }
         
                 div.innerHTML = labels.join('<br>');
